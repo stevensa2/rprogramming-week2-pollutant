@@ -15,11 +15,14 @@
 ## number of complete cases
 
 complete <- function(directory, id = 1:332){
-  end_results <- data.frame(id = numeric(0), nobs = numeric(0))
-  path <- paste(get(wd)), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep='')
-  data <- read.csv(path)
-  data_used <- data[(!is.na(data$sulfate)), ]
-  data_used <- data[(!is.na(data$nitrate)), ]
-  nobs <- nrows(data_used)
-  end_results <- rbind(end_results, data.fram(id = monitor, nobs = nobs))
+  for(monitor in id){
+    end_results <- data.frame(id = numeric(0), nobs = numeric(0))
+    path <- paste(get(wd)), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep='')
+    data <- read.csv(path)
+    data_used <- data[(!is.na(data$sulfate)), ]
+    data_used <- data[(!is.na(data$nitrate)), ]
+    nobs <- nrows(data_used)
+    end_results <- rbind(end_results, data.frame(id = monitor, nobs = nobs))
+  }
+  end_results()
 }
