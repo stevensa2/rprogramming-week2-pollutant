@@ -19,8 +19,8 @@ complete <- function(directory, id = 1:332){
     end_results <- data.frame(id = numeric(0), nobs = numeric(0))
     path <- paste(get(wd)), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep='')
     data <- read.csv(path)
-    data_used_sulfate <- data[(!is.na(data$sulfate)), ]
-    data_used_nitrate <- data[(!is.na(data$nitrate)), ]
+    data_used_sulfate <- data[(!is.na(data$sulfate))]
+    data_used_nitrate <- data[(!is.na(data$nitrate))]
     nobs <- nrows(data_used)
     end_results <- rbind(end_results, data.frame(id = monitor, nobs = nobs))
   }
