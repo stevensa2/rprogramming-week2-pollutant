@@ -9,12 +9,10 @@
 pollutantmean <- function(directory, pollutant, id = 1:332) {
 	means <- c()
 	for (monitor in id) {
-	path <- paste(get(wd)), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep="")
-	data <- read.csv(path)
-	used_data <- data[pollutant]
-	means <- c(means, used_data[!is.na(used_data)])
-  }
+	  data <- read.csv(paste(getwd(), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep=""))
+	  used_data <- data[pollutant]
+	  means <- c(means, used_data[!is.na(used_data)])
+	}
+	mean(means)
 }
-
-	
 
