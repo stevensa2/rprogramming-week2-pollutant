@@ -14,15 +14,15 @@
 ## where 'id' is the monitor ID number and 'nobs' is the
 ## number of complete cases
 
-complete <- function(directory, id = 1:332){
-  for(monitor in id){
-    end_results <- data.frame(id = numeric(0), nobs = numeric(0))
-    path <- paste(get(wd)), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep='')
-    data <- read.csv(path)
+complete <- function(directory, id = 1:332) {
+  end_results <- data.frame(monitor = numeric(0), nobs = numeric(0))
+  for(monitor in id) {
+    data <- read.csv(paste(getwd(), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep=''))
     data_used_sulfate <- data[(!is.na(data$sulfate))]
     data_used_nitrate <- data[(!is.na(data$nitrate))]
-    nobs <- nrows(data_used)
-    end_results <- rbind(end_results, data.frame(id = monitor, nobs = nobs))
+    nobs <- nrows(data_used_nitrate, data_used_sulfate)
+    end_results <- rbind(end_results, data.frame(monitor, nobs))
   }
-  end_results()
+  end_results
 }
+
