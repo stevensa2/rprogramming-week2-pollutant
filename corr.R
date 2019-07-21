@@ -15,12 +15,12 @@
 corr <- function(directory, threshold) {
   if(nrow(complete_cases > 0)) {
     for(monitor in id) {
-      path <- path <- paste(get(wd)), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep='')
+      path <- path <- paste(get(wd), "/", directory, "/", sprintf("%03d", monitor), ".csv", sep='')
       data <- read.csv(path)
       data_used_sulfate <- data[(!is.na(data$sulfate))]
       data_used_nitrate <- data[(!is.na(data$nitrate))]
-      sulfate <- data_used["sulfate"]
-      nitrate <- data_used["nitrate"]
+      sulfate <- data_used_sulfate["sulfate"]
+      nitrate <- data_used_nitrate["nitrate"]
       correlation <- cor(sulfate, nitrate)
     }
   }
